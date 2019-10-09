@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/posts/save" method="post">
+    <input type="text" name="contant">
+    <input type="submit">
+</form>
+
+<br><br><br>
+
+<div th:each="post : ${posts}" class="work">
+    <span th:each="user : ${post.user}" th:text="${user.username}"></span>
+    <span th:text="${post.localDate}"></span>
+    <p th:text="${post.contant}" class="para">post</p><br>
+    <a th:href="@{'/posts/get/'+${post.id}}">update</a>
+    ||
+    <a th:href="@{'/posts/delete/'+${post.id}}">delete</a>
+
+</div>
+</body>
+</html>

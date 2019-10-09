@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/posts/update">
+    <input type="text" th:value="${post.contant}" name="contant">
+    <input type="submit">
+</form>
+</body>
+</html>
