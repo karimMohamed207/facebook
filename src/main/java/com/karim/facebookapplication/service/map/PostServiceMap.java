@@ -42,7 +42,6 @@ public class PostServiceMap implements PostService {
 
     @Override
     public Post update( Post post) {
-        post = postRepository.findById(post.getId()).get();
         return postRepository.saveAndFlush(post);
     }
 }

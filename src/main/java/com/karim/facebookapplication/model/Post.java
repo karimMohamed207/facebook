@@ -2,6 +2,7 @@ package com.karim.facebookapplication.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -12,6 +13,8 @@ public class Post {
     private LocalDate localDate ;
     @ManyToOne
     private User user;
+    @OneToMany(mappedBy = "post" , cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     public Post(){
     }
@@ -50,5 +53,13 @@ public class Post {
 
     public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

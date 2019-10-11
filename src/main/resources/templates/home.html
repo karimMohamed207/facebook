@@ -66,6 +66,14 @@
    <span th:each="user : ${post.user}" th:text="${user.username}"></span>
     <span th:text="${post.localDate}"></span>
     <p th:text="${post.contant}" class="para">post</p><br>
+    <form action="/comments/save" method="post">
+        <input type="hidden" name="post" th:value="${post.id}">
+        <input type="text" name="contant">
+        <input type="submit">
+    </form>
+    <p th:each="co:${post.comments}" th:text="${co.contant}"></p>
+
 </div>
+
 </body>
 </html>

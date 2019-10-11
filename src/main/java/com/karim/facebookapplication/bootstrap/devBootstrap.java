@@ -1,7 +1,9 @@
 package com.karim.facebookapplication.bootstrap;
 
+import com.karim.facebookapplication.model.Comment;
 import com.karim.facebookapplication.model.Post;
 import com.karim.facebookapplication.model.User;
+import com.karim.facebookapplication.service.CommentService;
 import com.karim.facebookapplication.service.PostService;
 import com.karim.facebookapplication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class devBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private UserService userService ;
     @Autowired
     private PostService postService ;
+    @Autowired
+    private CommentService commentService ;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -41,6 +45,12 @@ public class devBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         post.setLocalDate(LocalDate.now());
         postService.save(post);
 
+        Comment comment = new Comment();
+        comment.setContant("this is first comment");
+        comment.setPost(post);
+        comment.setLocalDate(LocalDate.now());
+        comment.setUser(user);
+        commentService.save(comment);
 
     }
 }
